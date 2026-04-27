@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "/Build/(.*)\\.gz",
+      "headers": [
+        { "key": "Content-Encoding", "value": "gzip" }
+      ]
+    },
+    {
+      "source": "/Build/(.*)\\.wasm\\.gz",
+      "headers": [
+        { "key": "Content-Type", "value": "application/wasm" }
+      ]
+    },
+    {
+      "source": "/Build/(.*)\\.js\\.gz",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript" }
+      ]
+    }
+  ]
+}
