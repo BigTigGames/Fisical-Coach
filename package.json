@@ -1,0 +1,9 @@
+{
+  "name": "fisical-coach-webgl",
+  "version": "1.0.0",
+  "description": "Fisical Coach WebGL Build with auto-merge for Netlify",
+  "scripts": {
+    "split": "node split.js",
+    "build": "node merge.js"
+  }
+}

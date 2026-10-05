@@ -1,0 +1,12 @@
+# Ignore large assembled Unity data files (split into .part files for GitHub)
+Build/*.data.gz
+Build/*.data
+Build/*.tmp
+
+# Make sure split parts are tracked
+!Build/*.part*
+
+# OS and Node files
+node_modules/
+.DS_Store
+Thumbs.db

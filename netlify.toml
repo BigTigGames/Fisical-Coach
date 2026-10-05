@@ -1,0 +1,32 @@
+[build]
+  command = "node merge.js"
+  publish = "."
+
+[[headers]]
+  for = "/Build/*.data.gz"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Encoding = "gzip"
+
+[[headers]]
+  for = "/Build/*.wasm.gz"
+  [headers.values]
+    Content-Type = "application/wasm"
+    Content-Encoding = "gzip"
+
+[[headers]]
+  for = "/Build/*.framework.js.gz"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Content-Encoding = "gzip"
+
+[[headers]]
+  for = "/Build/*.js.gz"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Content-Encoding = "gzip"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
