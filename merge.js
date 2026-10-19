@@ -2,6 +2,19 @@ const fs = require('fs');
 const path = require('path');
 
 const BUILD_DIR = path.join(__dirname, 'Build');
+const INDEX_HTML = path.join(__dirname, 'index.html');
+
+function getActiveDataFile() {
+  if (!fs.existsSync(INDEX_HTML)) {
+    return null;
+  }
+  const content = fs.readFileSync(INDEX_HTML, 'utf8');
+  const match = content.match(/dataUrl\s*:\s*(?:buildUrl\s*\+\s*["']\/|["'](?:Build\/)?)([^"']+)["']/);
+  if (match && match[1]) {
+    return path.basename(match[1].trim());
+  }
+  return null;
+}
 
 function mergeFiles() {
   if (!fs.existsSync(BUILD_DIR)) {
@@ -10,13 +23,20 @@ function mergeFiles() {
   }
 
   const files = fs.readdirSync(BUILD_DIR);
+  const activeDataFile = getActiveDataFile();
+
   // Find all distinct base file names from .part1 files
   const baseFiles = new Set();
 
   for (const file of files) {
     const match = file.match(/^(.*)\.part1$/);
     if (match) {
-      baseFiles.add(match[1]);
+      const baseName = match[1];
+      if (activeDataFile && baseName !== activeDataFile) {
+        console.log(`Skipping inactive part sequence: ${baseName}`);
+        continue;
+      }
+      baseFiles.add(baseName);
     }
   }
 
