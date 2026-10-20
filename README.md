@@ -20,17 +20,25 @@ GitHub rejects files larger than 100MB. The Unity data file (`Build/Fisical Coac
 
 Whenever you export a new build from Unity into this directory:
 
-1. Run the split script:
+### Option 1 (Recommended - 1-Click):
+Double-click `post-build.bat` (or run `npm run postbuild`).
+It will:
+1. Detect the active build from `index.html`.
+2. Clean up any obsolete/stale chunks.
+3. Split the `.data.gz` file into GitHub-friendly chunks under 50MB.
+4. Prompt you to commit and push straight to GitHub (Netlify automatically deploys!).
+
+### Option 2 (Manual):
+1. Run split:
    ```bash
    node split.js
    ```
-   *(or `npm run split`)*
-
-2. Commit and push to GitHub:
+2. Commit and push:
    ```bash
    git add .
    git commit -m "Update WebGL build"
    git push origin main
    ```
 
-3. Netlify will automatically merge the files during deploy!
+Netlify will automatically merge the files during deploy!
+
