@@ -102,7 +102,7 @@ function mergeFiles() {
 
     console.log(`Successfully recreated ${baseFileName} (Total size: ${(totalBytes / (1024 * 1024)).toFixed(2)} MB)`);
   }
-  console.log('\nAll parts merged successfully for Netlify deployment.');
+  console.log('\nAll parts merged successfully for deployment (Netlify & Vercel).');
 }
 
 mergeFiles();
