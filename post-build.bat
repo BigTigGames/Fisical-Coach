@@ -67,7 +67,7 @@ if %errorlevel% neq 0 (
 ) else (
     echo.
     echo ===================================================
-    echo [SUCCESS] Pushed to GitHub! Netlify & Vercel are now deploying!
+    echo [SUCCESS] Pushed to GitHub! Netlify and Vercel are now deploying!
     echo ===================================================
 )
 
